@@ -1,6 +1,6 @@
 /* eslint-env browser */
 
-class Menu {
+class WeeklyMenu {
 
   constructor() {
     this.data = {
@@ -53,4 +53,4 @@ class Menu {
   }
 }
 
-export default Menu;
+export default WeeklyMenu;

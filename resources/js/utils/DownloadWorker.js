@@ -11,7 +11,7 @@ function handleErrors(response) {
   return response;
 }
 
-function createPromiseFromJob(job) {
+function createDownloadPromiseFromJob(job) {
   return new Promise(function(resolve, reject) {
     if (!SUPPORTED_RESULT_TYPES.includes(job.resultType)) {
       reject(new Error(`[DownloadWorker] Unsupported result type "${job.resultType}"`));
@@ -44,18 +44,17 @@ class DownloadWorker extends Observable {
     this.jobs = [];
   }
 
-  addJob(url, expectedResultType) {
-    this.jobs.push(new DownloadJob(url, expectedResultType));
+  addJob(job) {
+    this.jobs.push(job);
   }
 
   start() {
     let promises = [],
       self = this;
     for (let i = 0; i < this.jobs.length; i++) {
-      let promise = createPromiseFromJob(this.jobs[i]);
+      let promise = createDownloadPromiseFromJob(this.jobs[i]);
       promises.push(promise);
     }
-
     Promise.all(promises).then(function(results) {
       let event = new Event("finish", results);
       self.notifyAll(event);
@@ -66,4 +65,5 @@ class DownloadWorker extends Observable {
   }
 }
 
+export { DownloadJob, DownloadWorker };
 export default DownloadWorker;

@@ -1,10 +1,10 @@
 /* eslint-env browser */
 
-import DownloadWorker from "../utils/DownloadWorker.js";
-import Menu from "./Menu.js";
+import {DownloadJob, DownloadWorker} from "../utils/DownloadWorker.js";
+import WeeklyMenu from "./WeeklyMenu.js";
 import Config from "./DataConfig.js";
 
-var menuData = new Menu();
+var menuData = new WeeklyMenu();
 
 function getLongWeekday(shortWeekday) {
   let index = Config.WEEKDAYS_SHORT.indexOf(shortWeekday.toLowerCase());
@@ -32,7 +32,7 @@ function translateMenuEntries(menuData) {
 }
 
 function createMenu(dailyMenus) {
-  let newMenu = new Menu();
+  let newMenu = new WeeklyMenu();
   for (let i = 0; i < dailyMenus.length; i++) {
     let menuForCurrentDay = dailyMenus[i],
       currentShortDay = menuForCurrentDay[0].day,
@@ -55,7 +55,7 @@ function createUpdatePromise() {
     for (let i = 0; i < Config.WEEKDAYS_SHORT.length; i++) {
       let requestURL = Config.BASE_API_URL.replace("{{day}}", Config.WEEKDAYS_SHORT[
         i]);
-      worker.addJob(requestURL, "json");
+      worker.addJob(new DownloadJob(requestURL, "json"));
     }
     worker.start();
   });
@@ -64,7 +64,8 @@ function createUpdatePromise() {
 class DataManger {
 
   update() {
-    return createUpdatePromise();
+    let updatePromise = createUpdatePromise();
+    return updatePromise;
   }
 
   getMenuFor(day) {

@@ -7,26 +7,18 @@ class View extends Observable {
 
   constructor(el) {
     super();
-    this.el = el || undefined;
-  }
-
-  set element(el) {
-    this.el = el;
-  }
-
-  get element() {
-    return this.el;
+    this.element = el || undefined;
   }
 
   show() {
-    if (this.el) {
-      this.el.classList.remove(Config.CSS_HIDDEN_CLASS_NAME);
+    if (this.element) {
+      this.element.classList.remove(Config.CSS_HIDDEN_CLASS_NAME);
     }
   }
 
   hide() {
-    if (this.el) {
-      this.el.classList.add(Config.CSS_HIDDEN_CLASS_NAME);
+    if (this.element) {
+      this.element.classList.add(Config.CSS_HIDDEN_CLASS_NAME);
     }
   }
 
