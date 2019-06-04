@@ -3,47 +3,49 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Daily</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speiseplan der Uni Mensa</title>
     <link rel="stylesheet" href="vendors/fontello/css/fontello.css">
     <link rel="stylesheet" href="resources/css/styles.css">
 </head>
 
 <body>
     <header>
-        <h1>Daily</h1>
+        <h1>Speiseplan der Uni Mensa</h1>
     </header>
-    <section>
+    <div id="content">
         <ul class="day-selector">
-            <li class="button" data-day="monday">Monday</li>
-            <li class="button" data-day="tuesday" class="selected">Tuesday</li>
-            <li class="button" data-day="wednesday">Wednesday</li>
-            <li class="button" data-day="thursday">Thursday</li>
-            <li class="button" data-day="friday">Friday</li>
+            <li class="button" data-day="monday">Montag</li>
+            <li class="button" data-day="tuesday" class="selected">Dienstag</li>
+            <li class="button" data-day="wednesday">Mittwoch</li>
+            <li class="button" data-day="thursday">Donnerstag</li>
+            <li class="button" data-day="friday">Freitag</li>
         </ul>
         <div class="daily-menu">
             <ul class="category" data-category="soup">
-                <li class="label">Soup</li>
+                <li class="label">Suppen</li>
             </ul>
             <ul class="category" data-category="main">
-                <li class="label">Main</li>
+                <li class="label">Hauptgerichte</li>
             </ul>
             <ul class="category" data-category="sides">
-                <li class="label">Sides</li>
+                <li class="label">Beilagen</li>
             </ul>
             <ul class="category" data-category="dessert">
-                <li class="label">Dessert</li>
+                <li class="label">Desserts</li>
             </ul>
         </div>
-    </section>
+    </div>
+    <footer>
+        Die Inhalte des Speiseplans werden vom <a href="https://stwno.de/de/gastronomie/speiseplan/uni-regensburg/mensa-ur">Studentenwerk Niederbayern/Oberpfalz</a> bereitgestellt.
+    </footer>
     <script type="text/template" id="menu-entry">
-        <li class="entry" data-id="{{id}}" data-category="{{category}}">
-            <span class="data title">{{name}}</span>
-            </span>
+        <li class="entry hidden" data-id="{{id}}" data-category="{{category}}">
+            {{name}}
         </li>
     </script>
-    <script src="resources/js/DailyDataProvider.js"></script>
-    <script src="resources/js/EntryView.js"></script>
-    <script src="resources/js/Daily.js"></script>
+  
+    <script type="module" src="resources/js/index.js"></script>
 </body>
 
 </html>
