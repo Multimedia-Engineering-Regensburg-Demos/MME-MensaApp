@@ -65,7 +65,7 @@ function createUpdatePromise() {
   });
 }
 
-class DataManger {
+class DataManager {
 
   update() {
     let updatePromise = createUpdatePromise();
@@ -82,4 +82,4 @@ class DataManger {
 
 }
 
-export default new DataManger();
+export default new DataManager();
