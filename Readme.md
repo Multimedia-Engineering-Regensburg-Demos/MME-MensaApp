@@ -1,6 +1,6 @@
 # Mensa-App
 
-Informationen und eine Anleitung zur Implementierung der Demo finden Sie [hier](https://regensburger-forscher.de/mme/Demos/mensa-app/).
+Informationen und eine Anleitung zur Implementierung der Demo finden Sie [hier](https://multimedia-engineering.git-pages.uni-regensburg.de/mme-online/#/Demos/mensa-app).
 
 ## Download
 
